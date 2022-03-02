@@ -2,6 +2,7 @@
 
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
+import 'package:for_test/helpers/dialog_helper.dart';
 import 'package:for_test/helpers/snackbar_helper.dart';
 import 'package:for_test/routes/pages.dart';
 import 'package:for_test/services/service_provider.dart';
@@ -20,6 +21,8 @@ class CreateController extends GetxController {
     var formData;
 
     if (this.formKey.currentState!.validate()) {
+      DialogHelper.showLoading();
+
       // selectedImagePath.value != ''
       //     ? formData = dio.FormData.fromMap({
       //         'first_name': firstNameFC.text,
@@ -43,6 +46,7 @@ class CreateController extends GetxController {
       if (response == null) return;
 
       if (response != null) {
+        if (Get.isDialogOpen!) Get.back();
         formKey.currentState!.reset;
         print(response);
         Get.offAllNamed(AppPages.HOME);

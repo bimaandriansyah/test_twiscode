@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_overrides, unnecessary_this, argument_type_not_assignable_to_error_handler, file_names
 
 import 'package:flutter/material.dart';
+import 'package:for_test/helpers/dialog_helper.dart';
 import 'package:for_test/routes/pages.dart';
 import 'package:for_test/services/service_preference.dart';
 import 'package:for_test/services/service_provider.dart';
@@ -28,6 +29,7 @@ class LoginController extends GetxController {
   onSend() async {
     Get.focusScope?.unfocus();
     if (this.formKey.currentState!.validate()) {
+      DialogHelper.showLoading();
       var response = await ServiceProvider.postData('login',
           data: {'email': this.emailFC.text, 'password': this.passwordFC.text});
 
@@ -40,6 +42,7 @@ class LoginController extends GetxController {
         try {
           PreferenceService.setToken(response['token']);
         } finally {
+          if (Get.isDialogOpen!) Get.back();
           Get.offAllNamed(AppPages.HOME);
         }
       }
