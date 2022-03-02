@@ -1,7 +1,10 @@
 // ignore_for_file: avoid_print
 
 import 'package:dio/dio.dart';
+import 'package:for_test/helpers/snackbar_helper.dart';
 import 'package:for_test/services/service_init.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/utils.dart';
 
 class ServiceProvider {
   static Future<dynamic> getData(String path, {String? token}) async {
@@ -23,6 +26,10 @@ class ServiceProvider {
       return response.data;
     } on DioError catch (e) {
       print(e.message);
+      if (path == "login") {
+        if (Get.isDialogOpen!) Get.back();
+        snackbarHelper.showError(description: "User Not Found");
+      }
     }
   }
 
