@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_overrides, unnecessary_this, argument_type_not_assignable_to_error_handler, file_names, prefer_typing_uninitialized_variables, unused_local_variable
+// ignore_for_file: unnecessary_overrides, unnecessary_this, argument_type_not_assignable_to_error_handler, file_names, prefer_typing_uninitialized_variables, unused_local_variable, unused_import, avoid_print
 
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
