@@ -1,6 +1,8 @@
 # for_test
 
-A new Flutter project.
+FOR LOGIN
+email : eve.holt@reqres.in
+password : cityslicka
 
 ## Getting Started
 
