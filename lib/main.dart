@@ -2,28 +2,22 @@
 
 import 'package:flutter/material.dart';
 import 'package:for_test/routes/pages.dart';
-import 'package:for_test/services/service_preference.dart';
 import 'package:for_test/themes/lightTheme.dart';
 import 'package:get/get.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await PreferenceService.init();
-  final _token = await PreferenceService.getToken();
-  runApp(MyApp(
-    token: _token,
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key, required this.token}) : super(key: key);
-  var token;
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: token == null ? AppRoutes.INITIAL : AppRoutes.HOME,
+      initialRoute: AppRoutes.HOME,
       theme: lightTheme(context),
       getPages: AppRoutes.pages,
       defaultTransition: Transition.fadeIn,

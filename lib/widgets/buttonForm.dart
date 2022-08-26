@@ -12,7 +12,6 @@ Widget buttonForm({
   var splash,
 }) {
   return Container(
-    width: Get.width,
     child: ElevatedButton(
       onPressed: onClick,
       style: ElevatedButton.styleFrom(primary: color, splashFactory: splash),
@@ -20,7 +19,7 @@ Widget buttonForm({
         text,
         style: GoogleFonts.montserrat(
           color: AppColors.whiteColor,
-          fontSize: 16,
+          fontSize: 12,
           fontWeight: FontWeight.w600,
         ),
       ),
